@@ -5,7 +5,7 @@
     4. 1 Pan de molde integral - $ 2.45
     */
 
-var arroz2lib = 2, azucar1lib = 1.5, sal1lib = 1, moldeIntegral = 2.45, sumaCompra = 0;
+let arroz2lib = 2, azucar1lib = 1.5, sal1lib = 1, moldeIntegral = 2.45, sumaCompra = 0;
 
 function comprar () { 
     let item = parseInt(prompt("ingrese el número del item a comprar"));
