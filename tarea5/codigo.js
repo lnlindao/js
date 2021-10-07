@@ -10,7 +10,6 @@ class paciente{
     obtenerUsuario(){
         console.log(this.nombre)
     }
-
 }
 
 
