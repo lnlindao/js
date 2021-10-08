@@ -12,7 +12,12 @@ class Paciente{
     }
 }
 
-let datosPacientes = [], idPaciente=0;
+let datosPacientes =  [
+    {id: 1, nombre: "Lissette", apellido: "Lindao", nombreUsuario: "lnlindao",contrasena:"123"},
+    {id: 2, nombre: "Elisa", apellido: "Chiriguayo", nombreUsuario: "echirig",contrasena:"123"},
+    {id: 3, nombre: "Abel", apellido: "Cajamarca", nombreUsuario: "acajam",contrasena:"123"}
+  ], 
+    idPaciente=datosPacientes.length;
 
 function crearUsuario(){
     idPaciente+=1;
@@ -25,7 +30,7 @@ function crearUsuario(){
 }
 
 function MostrarUsuarios(){
-    console.log(datosPacientes);
+    console.table(datosPacientes);
     for( let paciente of datosPacientes){
         console.log("Id paciente: " +  paciente.id)
         console.log("Nombre: " +  paciente.nombre)
@@ -37,9 +42,13 @@ function MostrarUsuarios(){
 function login(){
     let usuario = prompt("Ingrese nombre de usuario");
     let contrasena = prompt("Ingrese conctraseña");
-    datosPacientes.find(nombreDePaciente => nombreDePaciente.nombre === usuario) && datosPacientes.find(clavePaciente => clavePaciente.contrasena === contrasena) ? (
+    datosPacientes.find(nombreDePaciente => nombreDePaciente.nombre == usuario) && datosPacientes.find(clavePaciente => clavePaciente.contrasena == contrasena) ? (
         alert(`Bienvenid@ nuevamente ${datosPacientes.nombre} `)
     ) : (
         alert("Datos incorrectos")
     );
+}
+
+function ordenarNombresPacientes(){
+    console.table(datosPacientes.sort(((a, b) => b.nombre - a.nombre)));
 }
