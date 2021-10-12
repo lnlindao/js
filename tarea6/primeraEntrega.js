@@ -23,12 +23,13 @@ class Alimento{
 
 let datosPacientes =  [], 
     datosAlimentos =  [], 
-    idPacientes = 0, idAlimentos = 0;
+    idAlimento = 0;
 
-
+datosPacientes.push(new Paciente(1, "Lissette", "Lindao", "lnlindao", "123"));
+let idPaciente=datosPacientes.length;
 
 function crearUsuario(){
-    idPacientes+=1;
+    idPaciente+=1;
     let nombrePaciente = prompt("Ingrese nombre");
     let apellidoPaciente = prompt("Ingrese apellido");
     let nombreUser = prompt("Ingrese nombre de usuario");
@@ -36,11 +37,11 @@ function crearUsuario(){
     datosPacientes.push( new Paciente(idPaciente, nombrePaciente, apellidoPaciente, nombreUser, contrasena));
 }
 function crearUsuarioagregarAlimento(){
-    idAlimentos+=1;
+    idAlimento+=1;
     let nombreAlimento = prompt("Ingrese nombre alimento");
     let porcionAlimento = prompt("Ingrese porción del alimento");
     let CantidadHC = prompt("Ingrese cantidad de HC de la porción");
-    datosPacientes.push( new Alimento(idObjetos, nombreAlimento, porcionAlimento, CantidadHC));
+    datosAlimentos.push( new Alimento(idAlimento, nombreAlimento, porcionAlimento, CantidadHC));
 }
 
 function MostrarUsuarios(){
@@ -72,14 +73,20 @@ function MostrarAlimentos(){
     
 }
 
-function login(){
-    let usuario = prompt("Ingrese nombre de usuario");
-    let contrasena = prompt("Ingrese conctraseña");
-    datosPacientes.find(nombreDePaciente => nombreDePaciente.nombre == usuario) && datosPacientes.find(clavePaciente => clavePaciente.contrasena == contrasena) ? (
-        alert(`Bienvenid@ nuevamente ${datosPacientes.nombre} `)
-    ) : (
-        alert("Datos incorrectos")
-    );
+function login() {
+
+    let usuario = prompt("Ingrese nombre de usuario")
+    let contrasena = prompt("Ingrese conctraseña")
+ 
+    let exist = datosPacientes.find(usuarioPaciente => usuarioPaciente.nombreUsuario == usuario) && datosPacientes.find(clavePaciente => clavePaciente.contrasena == contrasena) 
+
+    console.log(exist)
+    if (exist) { 
+        let posicion = datosPacientes.indexOf(exist) 
+        alert(`Bienvenid@ nuevamente ${datosPacientes[posicion].nombre} `) 
+    }else{ 
+        alert("Datos incorrectos") 
+    }
 }
 
 function ordenarNombresPacientes(){

@@ -35,12 +35,20 @@ function MostrarUsuarios(){
     }
 }
 
-function login(){
-    let usuario = prompt("Ingrese nombre de usuario");
-    let contrasena = prompt("Ingrese conctraseña");
-    datosPacientes.find(nombreDePaciente => nombreDePaciente.nombre == usuario) && datosPacientes.find(clavePaciente => clavePaciente.contrasena == contrasena) ? (
-        alert(`Bienvenid@ nuevamente ${datosPacientes.nombre} `)
-    ) : (
-        alert("Datos incorrectos")
-    );
-}
+
+function login() {
+
+    let usuario = prompt("Ingrese nombre de usuario"); 
+    let contrasena = prompt("Ingrese conctraseña"); 
+ 
+    let exist = datosPacientes.find(nombreDePaciente => nombreDePaciente.nombreUsuario == usuario) && datosPacientes.find(clavePaciente => clavePaciente.contrasena == contrasena) 
+ 
+    if (exist) { 
+        let posicion = datosPacientes.indexOf(exist) 
+        alert(`Bienvenid@ nuevamente ${datosPacientes[posicion].nombre} `) 
+    }else{ 
+        alert("Datos incorrectos") 
+    }
+ 
+ 
+ }
