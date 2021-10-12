@@ -26,6 +26,8 @@ let datosPacientes =  [],
     idAlimento = 0;
 
 datosPacientes.push(new Paciente(1, "Lissette", "Lindao", "lnlindao", "123"));
+datosPacientes.push(new Paciente(1, "Melina", "Chiriguayo", "elisa", "123"));
+datosPacientes.push(new Paciente(1, "Abel", "Cajamarca", "abel", "123"));
 let idPaciente=datosPacientes.length;
 
 function crearUsuario(){
@@ -77,18 +79,47 @@ function login() {
 
     let usuario = prompt("Ingrese nombre de usuario")
     let contrasena = prompt("Ingrese conctraseña")
- 
-    let exist = datosPacientes.find(usuarioPaciente => usuarioPaciente.nombreUsuario == usuario) && datosPacientes.find(clavePaciente => clavePaciente.contrasena == contrasena) 
-
-    console.log(exist)
-    if (exist) { 
-        let posicion = datosPacientes.indexOf(exist) 
-        alert(`Bienvenid@ nuevamente ${datosPacientes[posicion].nombre} `) 
-    }else{ 
-        alert("Datos incorrectos") 
+    
+    let userOK = datosPacientes.find(nombreDePaciente => nombreDePaciente.nombreUsuario == usuario)
+    let password = datosPacientes.find(clavePaciente => clavePaciente.contrasena == contrasena)    
+    if(userOK && password){
+        let posicion = datosPacientes.indexOf(userOK)
+        console.log(posicion)
+        alert(`Bienvenido ${datosPacientes[posicion].nombre}`)
+    }else{
+        alert('Datos incorrectos')
     }
 }
 
 function ordenarNombresPacientes(){
-    console.table(datosPacientes.sort(((a, b) => b.nombre - a.nombre)));
+
+    let orden = parseInt(prompt("Quieres ordenar por (1) Nombre o (2) Apellido"))
+    if (orden == 1){
+        console.log("Orden por nombre")
+        datosPacientes.sort(function (a, b) {
+            if (a.nombre > b.nombre) {
+              return 1;
+            }
+            if (a.nombre < b.nombre) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
+          console.table(datosPacientes)
+    } else if (orden == 2){
+        console.log("Orden por apellido")
+        datosPacientes.sort(function (a, b) {
+            if (a.apellido > b.apellido) {
+              return 1;
+            }
+            if (a.apellido < b.apellido) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
+          console.table(datosPacientes)
+    } 
+    
 }
