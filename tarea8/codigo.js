@@ -51,7 +51,17 @@ function crearUsuario(){
     console.log(datosPacientes);
     alert("Usuario agregado exitosamente");
 }
-
+function MostrarUsuarios(){
+    for( let paciente of datosPacientes) {
+        let contenedor = document.createElement("div");
+        //Definimos el innerHTML del elemento con una plantilla de texto
+        contenedor.innerHTML = `<h3> Id paciente: ${paciente.id}</h3>
+                                <p>  Nombre: ${paciente.nombre}</p>
+                                <p>  Apellido: ${paciente.apellido}</p> `;
+        document.body.appendChild(contenedor);
+    }
+    
+}
 
 function crearUsuarioagregarAlimento(){
     idAlimento+=1;
@@ -61,20 +71,7 @@ function crearUsuarioagregarAlimento(){
     datosAlimentos.push( new Alimento(idAlimento, nombreAlimento, porcionAlimento, CantidadHC));
 }
 
-function MostrarUsuarios(){
-    if ( datosPacientes.length > 0){
-        console.table(datosPacientes);
-        for( let paciente of datosPacientes){
-            console.log("Id paciente: " +  paciente.id)
-            console.log("Nombre: " +  paciente.nombre)
-            console.log("Apellido: " +  paciente.apellido)
-            console.log("Nombre de usuario: " +  paciente.nombreUsuario)    
-        }
-    } else {
-        alert("No hay pacientes para mostrar");
-    }
-    
-}
+
 function MostrarAlimentos(){
     if ( datosAlimentos.length > 0){
         console.table(datosAlimentos);
